@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<name>Restrict Email Providers/Domains/TLDs on Registration</name>
+<id>danielcshn:Restrict_Email_on_Registration</id>
+<version>1.6</version>
+
+<file name="$languagedir/Modifications.english.php">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Sorry, email accounts from that provider are not permitted. Please use an alternative email address.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Enable restriction of email providers and domains on registration';
+$txt['restricted_provider'] = 'Which email providers should be restricted on registration? <br /><i> (As an example, to block hotmail and gmail you should write @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = 'Which email providers should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow hotmail and gmail you should write @hotmail.com, @gmail.com).<br /><font color="red"><b>Note: If you use this list, all other providers will be blocked.</b></font>';
+$txt['restricted_domain_msg'] = 'Sorry, email accounts from that domain are not permitted. Please use an alternative email address.';
+$txt['restricted_domain'] = 'Which domains/TLDs should be restricted on registration? <br /><i> (As an example, to block Russian and Chinese domains you should write .ru, .cn) ';
+$txt['accepted_domain'] = 'Which domains/TLDs should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow Argentina and Spain domains you should write .ar, .es) ';
+$txt['restricted_pattern'] = 'Sorry, your email address contains too many numbers or special characters. Please use an alternative email address.';
+$txt['restrict_max_dots'] = 'Max dots (.) allowed in the email local part (0 to disable)';
+$txt['restrict_max_numbers'] = 'Max numbers (0-9) allowed in the email local part (0 to disable)';
+$txt['restrict_max_hyphens'] = 'Max hyphens (-) allowed in the email local part (0 to disable)';
+$txt['restrict_max_underscores'] = 'Max underscores (_) allowed in the email local part (0 to disable)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.spanish.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
+$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
+$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
+$txt['restricted_pattern'] = 'Lo sentimos, tu dirección de correo electrónico contiene demasiados números o caracteres especiales. Por favor, utiliza una dirección alternativa.';
+$txt['restrict_max_dots'] = 'Puntos (.) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_numbers'] = 'Números (0-9) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_hyphens'] = 'Guiones (-) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_underscores'] = 'Guiones bajos (_) máximos permitidos en la primera parte del correo (0 para desactivar)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.spanish_es.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
+$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
+$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
+$txt['restricted_pattern'] = 'Lo sentimos, tu dirección de correo electrónico contiene demasiados números o caracteres especiales. Por favor, utiliza una dirección alternativa.';
+$txt['restrict_max_dots'] = 'Puntos (.) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_numbers'] = 'Números (0-9) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_hyphens'] = 'Guiones (-) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_underscores'] = 'Guiones bajos (_) máximos permitidos en la primera parte del correo (0 para desactivar)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.spanish_latin.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
+$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
+$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
+$txt['restricted_pattern'] = 'Lo sentimos, tu dirección de correo electrónico contiene demasiados números o caracteres especiales. Por favor, utiliza una dirección alternativa.';
+$txt['restrict_max_dots'] = 'Puntos (.) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_numbers'] = 'Números (0-9) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_hyphens'] = 'Guiones (-) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_underscores'] = 'Guiones bajos (_) máximos permitidos en la primera parte del correo (0 para desactivar)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.italian.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Spiacenti, gli account di posta elettronica di quel provider non sono consentiti. Si prega di utilizzare un indirizzo email alternativo.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Abilita la restrizione di fornitori e domini di posta elettronica alla registrazione';
+$txt['restricted_provider'] = 'Quali fornitori di posta elettronica devono essere limitati alla registrazione? <br /><i> (Ad esempio, per bloccare hotmail e gmail dovresti scrivere @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = 'Quali fornitori di posta elettronica devono essere accettati esclusivamente alla registrazione? <br /><i> (Ad esempio, per consentire SOLO hotmail e gmail dovresti scrivere @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Se usi questa lista, tutti gli altri fornitori saranno bloccati.</b></font>';
+$txt['restricted_domain_msg'] = 'Spiacenti, gli account di posta elettronica di quel dominio non sono consentiti. Si prega di utilizzare un indirizzo email alternativo.';
+$txt['restricted_domain'] = 'Quali domini/TLD devono essere limitati alla registrazione? <br /><i> (Ad esempio, per bloccare i domini russi o cinesi dovresti scrivere .ru, .cn) ';
+$txt['accepted_domain'] = 'Quali domini/TLD devono essere accettati esclusivamente alla registrazione? <br /><i> (Ad esempio, per consentire SOLO i domini di Spagna o Argentina dovresti scrivere .es, .ar) ';
+$txt['restricted_pattern'] = 'Spiacenti, il tuo indirizzo email contiene troppi numeri o caratteri speciali. Si prega di utilizzare un indirizzo email alternativo.';
+$txt['restrict_max_dots'] = 'Punti (.) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+$txt['restrict_max_numbers'] = 'Numeri (0-9) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+$txt['restrict_max_hyphens'] = 'Trattini (-) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+$txt['restrict_max_underscores'] = 'Trattini bassi (_) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.portuguese_brazilian.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lamentamos, mas contas de e-mail desse provedor não são permitidas. Por favor, utilize um endereço de e-mail alternativo.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Ative a restrição de provedores de e-mail e domínios no registro.';
+$txt['restricted_provider'] = 'Quais provedores de e-mail devem ser restringidos durante o cadastro? <br /><i> (Por exemplo, para bloquear Hotmail e Gmail, você deve inserir @hotmail.com e @gmail.com)';
+$txt['accepted_provider'] = 'Quais provedores de e-mail devem ser os únicos aceitos para cadastro? <br /><i>(Por exemplo, para permitir SOMENTE Hotmail e Gmail, você deve inserir @hotmail.com, @gmail.com).<br /><font color="red"><b>Observação: Se você usar esta lista, todos os outros provedores serão bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lamentamos, mas contas de e-mail desse domínio não são permitidas. Por favor, utilize um endereço de e-mail alternativo.';
+$txt['restricted_domain'] = 'Quais domínios/TLDs devem ser restringidos no registro? <br /><i> (Por exemplo, para bloquear domínios russos ou chineses, você deve escrever .ru, .cn)';
+$txt['accepted_domain'] = 'Quais domínios/TLDs devem ser os únicos aceitos no registro? <br /><i> (Por exemplo, para permitir APENAS domínios da Espanha ou da Argentina, você deve escrever .es, .ar)';
+$txt['restricted_pattern'] = 'Desculpe, seu endereço de e-mail contém muitos números ou caracteres especiais. Por favor, utilize um endereço alternativo.';
+$txt['restrict_max_dots'] = 'Número máximo de pontos (.) permitidos na primeira parte do e-mail (0 para desativar)';
+$txt['restrict_max_numbers'] = 'Número máximo de números (0-9) permitidos na primeira parte do e-mail (0 para desativar)';
+$txt['restrict_max_hyphens'] = 'Número máximo de hífens (-) permitidos na primeira parte do e-mail (0 para desativar)';
+$txt['restrict_max_underscores'] = 'Número máximo de sublinhados (_) permitidos na primeira parte do e-mail (0 para desativar)';
+]]></add>
+	</operation>
+</file>
+
+<!-- UTF-8 -->
+
+<file name="$languagedir/Modifications.spanish-utf8.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
+$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
+$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
+$txt['restricted_pattern'] = 'Lo sentimos, tu dirección de correo electrónico contiene demasiados números o caracteres especiales. Por favor, utiliza una dirección alternativa.';
+$txt['restrict_max_dots'] = 'Puntos (.) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_numbers'] = 'Números (0-9) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_hyphens'] = 'Guiones (-) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_underscores'] = 'Guiones bajos (_) máximos permitidos en la primera parte del correo (0 para desactivar)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.spanish_latin-utf8.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
+$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
+$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
+$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
+$txt['restricted_pattern'] = 'Lo sentimos, tu dirección de correo electrónico contiene demasiados números o caracteres especiales. Por favor, utiliza una dirección alternativa.';
+$txt['restrict_max_dots'] = 'Puntos (.) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_numbers'] = 'Números (0-9) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_hyphens'] = 'Guiones (-) máximos permitidos en la primera parte del correo (0 para desactivar)';
+$txt['restrict_max_underscores'] = 'Guiones bajos (_) máximos permitidos en la primera parte del correo (0 para desactivar)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.english-utf8.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Sorry, email accounts from that provider are not permitted. Please use an alternative email address.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Enable restriction of email providers and domains on registration';
+$txt['restricted_provider'] = 'Which email providers should be restricted on registration? <br /><i> (As an example, to block hotmail and gmail you should write @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = 'Which email providers should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow hotmail and gmail you should write @hotmail.com, @gmail.com).<br /><font color="red"><b>Note: If you use this list, all other providers will be blocked.</b></font>';
+$txt['restricted_domain_msg'] = 'Sorry, email accounts from that domain are not permitted. Please use an alternative email address.';
+$txt['restricted_domain'] = 'Which domains/TLDs should be restricted on registration? <br /><i> (As an example, to block Russian and Chinese domains you should write .ru, .cn) ';
+$txt['accepted_domain'] = 'Which domains/TLDs should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow Argentina and Spain domains you should write .ar, .es) ';
+$txt['restricted_pattern'] = 'Sorry, your email address contains too many numbers or special characters. Please use an alternative email address.';
+$txt['restrict_max_dots'] = 'Max dots (.) allowed in the email local part (0 to disable)';
+$txt['restrict_max_numbers'] = 'Max numbers (0-9) allowed in the email local part (0 to disable)';
+$txt['restrict_max_hyphens'] = 'Max hyphens (-) allowed in the email local part (0 to disable)';
+$txt['restrict_max_underscores'] = 'Max underscores (_) allowed in the email local part (0 to disable)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.italian-utf8.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Spiacenti, gli account di posta elettronica di quel provider non sono consentiti. Si prega di utilizzare un indirizzo email alternativo.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Abilita la restrizione di fornitori e domini di posta elettronica alla registrazione';
+$txt['restricted_provider'] = 'Quali fornitori di posta elettronica devono essere limitati alla registrazione? <br /><i> (Ad esempio, per bloccare hotmail e gmail dovresti scrivere @hotmail.com, @gmail.com) ';
+$txt['accepted_provider'] = 'Quali fornitori di posta elettronica devono essere accettati esclusivamente alla registrazione? <br /><i> (Ad esempio, per consentire SOLO hotmail e gmail dovresti scrivere @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Se usi questa lista, tutti gli altri fornitori saranno bloccati.</b></font>';
+$txt['restricted_domain_msg'] = 'Spiacenti, gli account di posta elettronica di quel dominio non sono consentiti. Si prega di utilizzare un indirizzo email alternativo.';
+$txt['restricted_domain'] = 'Quali domini/TLD devono essere limitati alla registrazione? <br /><i> (Ad esempio, per bloccare i domini russi o cinesi dovresti scrivere .ru, .cn) ';
+$txt['accepted_domain'] = 'Quali domini/TLD devono essere accettati esclusivamente alla registrazione? <br /><i> (Ad esempio, per consentire SOLO i domini di Spagna o Argentina dovresti scrivere .es, .ar) ';
+$txt['restricted_pattern'] = 'Spiacenti, il tuo indirizzo email contiene troppi numeri o caratteri speciali. Si prega di utilizzare un indirizzo email alternativo.';
+$txt['restrict_max_dots'] = 'Punti (.) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+$txt['restrict_max_numbers'] = 'Numeri (0-9) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+$txt['restrict_max_hyphens'] = 'Trattini (-) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+$txt['restrict_max_underscores'] = 'Trattini bassi (_) massimi consentiti nella prima parte dell\'email (0 per disattivare)';
+]]></add>
+	</operation>
+</file>
+
+<file name="$languagedir/Modifications.portuguese_brazilian-utf8.php" error="skip">
+	<operation>
+	<search position="end" />
+	<add><![CDATA[$txt['restricted'] = 'Lamentamos, mas contas de e-mail desse provedor não são permitidas. Por favor, utilize um endereço de e-mail alternativo.';
+$txt['restrictemail_title'] = 'Restrict Email Settings';
+$txt['enable_restrict_EmailProvider'] = 'Ative a restrição de provedores de e-mail e domínios no registro.';
+$txt['restricted_provider'] = 'Quais provedores de e-mail devem ser restringidos durante o cadastro? <br /><i> (Por exemplo, para bloquear Hotmail e Gmail, você deve inserir @hotmail.com e @gmail.com)';
+$txt['accepted_provider'] = 'Quais provedores de e-mail devem ser os únicos aceitos para cadastro? <br /><i>(Por exemplo, para permitir SOMENTE Hotmail e Gmail, você deve inserir @hotmail.com, @gmail.com).<br /><font color="red"><b>Observação: Se você usar esta lista, todos os outros provedores serão bloqueados.</b></font>';
+$txt['restricted_domain_msg'] = 'Lamentamos, mas contas de e-mail desse domínio não são permitidas. Por favor, utilize um endereço de e-mail alternativo.';
+$txt['restricted_domain'] = 'Quais domínios/TLDs devem ser restringidos no registro? <br /><i> (Por exemplo, para bloquear domínios russos ou chineses, você deve escrever .ru, .cn)';
+$txt['accepted_domain'] = 'Quais domínios/TLDs devem ser os únicos aceitos no registro? <br /><i> (Por exemplo, para permitir APENAS domínios da Espanha ou da Argentina, você deve escrever .es, .ar)';
+$txt['restricted_pattern'] = 'Desculpe, seu endereço de e-mail contém muitos números ou caracteres especiais. Por favor, utilize um endereço alternativo.';
+$txt['restrict_max_dots'] = 'Número máximo de pontos (.) permitidos na primeira parte do e-mail (0 para desativar)';
+$txt['restrict_max_numbers'] = 'Número máximo de números (0-9) permitidos na primeira parte do e-mail (0 para desativar)';
+$txt['restrict_max_hyphens'] = 'Número máximo de hífens (-) permitidos na primeira parte do e-mail (0 para desativar)';
+$txt['restrict_max_underscores'] = 'Número máximo de sublinhados (_) permitidos na primeira parte do e-mail (0 para desativar)';
+]]></add>
+	</operation>
+</file>
+
+</modification>

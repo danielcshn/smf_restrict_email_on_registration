@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <name>Restrict Email Providers/Domains/TLDs on Registration</name>
 <id>danielcshn:Restrict_Email_on_Registration</id>
-<version>1.4</version>
+<version>1.6</version>
 
 <file name="$sourcedir/Subs-Members.php">
 <operation>
@@ -91,6 +91,25 @@
          if ($has_valid_domains && !$domain_matched)
             fatal_error(sprintf($txt['restricted_domain_msg'], $regOptions['username']), false);
       }
+      
+      // 5. Check pattern restrictions
+      $email_local = substr($regOptions['email'], 0, strrpos($regOptions['email'], '@'));
+
+      // Max dots
+      if (!empty($modSettings['restrict_max_dots']) && $modSettings['restrict_max_dots'] > 0 && substr_count($email_local, '.') > $modSettings['restrict_max_dots'])
+         fatal_error(sprintf($txt['restricted_pattern'], $regOptions['username']), false);
+
+      // Max numbers
+      if (!empty($modSettings['restrict_max_numbers']) && $modSettings['restrict_max_numbers'] > 0 && preg_match_all('/[0-9]/', $email_local) > $modSettings['restrict_max_numbers'])
+         fatal_error(sprintf($txt['restricted_pattern'], $regOptions['username']), false);
+
+      // Max hyphens
+      if (!empty($modSettings['restrict_max_hyphens']) && $modSettings['restrict_max_hyphens'] > 0 && substr_count($email_local, '-') > $modSettings['restrict_max_hyphens'])
+         fatal_error(sprintf($txt['restricted_pattern'], $regOptions['username']), false);
+
+      // Max underscores
+      if (!empty($modSettings['restrict_max_underscores']) && $modSettings['restrict_max_underscores'] > 0 && substr_count($email_local, '_') > $modSettings['restrict_max_underscores'])
+         fatal_error(sprintf($txt['restricted_pattern'], $regOptions['username']), false);
    }
 
    // @todo Separate the sprintf?
@@ -100,80 +119,82 @@
 	
 </file>
 
+<file name="$sourcedir/Admin.php">
+	<operation>
+		<search position="before"><![CDATA[// 'shout' => array($txt['shout']),]]></search>
+		<add><![CDATA[
+						'restrictemail' => array($txt['restrictemail_title']),
+						]]></add>
+	</operation>
+</file>
+
 <file name="$sourcedir/ManageSettings.php">
-<operation>
-	<search position="before"><![CDATA[		// Mod authors, add any settings UNDER this line. Include a comma at the end of the line and don't remove this statement!!
+	<operation>
+		<search position="after"><![CDATA[// Mod authors, once again, if you have a whole section to add do it AFTER this line, and keep a comma at the end.]]></search>
+		<add><![CDATA['restrictemail' => 'ShowRestrictEmail',
+		]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA[		'description' => $txt['modification_settings_desc'],
+		'tabs' => array(
+			'general' => array(
+			),
 ]]></search>
-	<add><![CDATA[
+		<add><![CDATA[			'restrictemail' => array(
+			),
+]]></add>
+	</operation>
+	<operation>
+		<search position="end" />
+		<add><![CDATA[
+// Start Restrict Email Mod
+function ShowRestrictEmail($return_config = false)
+{
+	global $txt, $scripturl, $context, $settings, $sc, $modSettings, $boarddir, $sourcedir;
+
+	$config_vars = array(
 			array('check', 'enable_restrict_EmailProvider',
 			&$txt['enable_restrict_EmailProvider']), 
-			array('text', 'restricted_provider', '35', 
-			&$txt['restricted_provider']),
-			array('text', 'accepted_provider', '35', 
-			&$txt['accepted_provider']),
-			array('text', 'restricted_domain', '35', 
-			&$txt['restricted_domain']),
-			array('text', 'accepted_domain', '35', 
-			&$txt['accepted_domain']),
-]]></add>
-	</operation>
+			'',
+			array('large_text', 'restricted_provider', '8', 
+			&$txt['restricted_provider'], 'cols' => 30),
+			array('large_text', 'accepted_provider', '8', 
+			&$txt['accepted_provider'], 'cols' => 30),
+			array('large_text', 'restricted_domain', '8', 
+			&$txt['restricted_domain'], 'cols' => 30),
+			array('large_text', 'accepted_domain', '8', 
+			&$txt['accepted_domain'], 'cols' => 30),
+			
+			// Pattern Restrictions
+			'',
+			array('int', 'restrict_max_dots', 
+			&$txt['restrict_max_dots']),
+			array('int', 'restrict_max_numbers', 
+			&$txt['restrict_max_numbers']),
+			array('int', 'restrict_max_hyphens', 
+			&$txt['restrict_max_hyphens']),
+			array('int', 'restrict_max_underscores', 
+			&$txt['restrict_max_underscores']),
+	);
 
-</file>
+	if ($return_config)
+		return $config_vars;
 
+	$context['post_url'] = $scripturl . '?action=admin;area=modsettings;save;sa=restrictemail';
+	$context['settings_title'] = $txt['restrictemail_title'];
 
+	// Saving?
+	if (isset($_GET['save']))
+	{
+		checkSession();
+		$save_vars = $config_vars;
+		saveDBSettings($save_vars);
+		redirectexit('action=admin;area=modsettings;sa=restrictemail');
+	}
 
-<file name="$languagedir/Modifications.english.php">
-	<operation>
-	<search position="end" />
-	<add><![CDATA[$txt['restricted'] = 'Sorry, email accounts from that provider are not permitted. Please use an alternative email address.';
-$txt['enable_restrict_EmailProvider'] = 'Enable restriction of email providers and domains on registration';
-$txt['restricted_provider'] = 'Which email providers should be restricted on registration? <br /><i> (As an example, to block hotmail and gmail you should write @hotmail.com, @gmail.com) ';
-$txt['accepted_provider'] = 'Which email providers should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow hotmail and gmail you should write @hotmail.com, @gmail.com).<br /><font color="red"><b>Note: If you use this list, all other providers will be blocked.</b></font>';
-$txt['restricted_domain_msg'] = 'Sorry, email accounts from that domain are not permitted. Please use an alternative email address.';
-$txt['restricted_domain'] = 'Which domains/TLDs should be restricted on registration? <br /><i> (As an example, to block Russian and Chinese domains you should write .ru, .cn) ';
-$txt['accepted_domain'] = 'Which domains/TLDs should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow Argentina and Spain domains you should write .ar, .es) ';
-]]></add>
-	</operation>
-</file>
-
-<file name="$languagedir/Modifications.english-utf8.php" error="skip">
-	<operation>
-	<search position="end" />
-	<add><![CDATA[$txt['restricted'] = 'Sorry, email accounts from that provider are not permitted. Please use an alternative email address.';
-$txt['enable_restrict_EmailProvider'] = 'Enable restriction of email providers and domains on registration';
-$txt['restricted_provider'] = 'Which email providers should be restricted on registration? <br /><i> (As an example, to block hotmail and gmail you should write @hotmail.com, @gmail.com) ';
-$txt['accepted_provider'] = 'Which email providers should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow hotmail and gmail you should write @hotmail.com, @gmail.com).<br /><font color="red"><b>Note: If you use this list, all other providers will be blocked.</b></font>';
-$txt['restricted_domain_msg'] = 'Sorry, email accounts from that domain are not permitted. Please use an alternative email address.';
-$txt['restricted_domain'] = 'Which domains/TLDs should be restricted on registration? <br /><i> (As an example, to block Russian and Chinese domains you should write .ru, .cn) ';
-$txt['accepted_domain'] = 'Which domains/TLDs should be exclusively accepted on registration? <br /><i> (As an example, to ONLY allow Argentina and Spain domains you should write .ar, .es) ';
-]]></add>
-	</operation>
-</file>
-
-<file name="$languagedir/Modifications.spanish_es.php" error="skip">
-	<operation>
-	<search position="end" />
-	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
-$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
-$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
-$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
-$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
-$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
-$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
-]]></add>
-	</operation>
-</file>
-
-<file name="$languagedir/Modifications.spanish_latin.php" error="skip">
-	<operation>
-	<search position="end" />
-	<add><![CDATA[$txt['restricted'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese proveedor. Por favor, utiliza una dirección de correo alternativa.';
-$txt['enable_restrict_EmailProvider'] = 'Activar restricción de proveedores y dominios de correo en el registro';
-$txt['restricted_provider'] = '¿Qué proveedores de correo deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear hotmail y gmail debes escribir @hotmail.com, @gmail.com) ';
-$txt['accepted_provider'] = '¿Qué proveedores de correo deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO hotmail y gmail debes escribir @hotmail.com, @gmail.com).<br /><font color="red"><b>Nota: Si usas esta lista, todos los demás proveedores serán bloqueados.</b></font>';
-$txt['restricted_domain_msg'] = 'Lo sentimos, no se permiten cuentas de correo electrónico de ese dominio. Por favor, utiliza una dirección de correo alternativa.';
-$txt['restricted_domain'] = '¿Qué dominios/TLDs deben restringirse en el registro? <br /><i> (Por ejemplo, para bloquear dominios rusos o chinos debes escribir .ru, .cn) ';
-$txt['accepted_domain'] = '¿Qué dominios/TLDs deben ser los únicos aceptados en el registro? <br /><i> (Por ejemplo, para permitir SOLO dominios de España o Argentina debes escribir .es, .ar) ';
+	prepareDBSettingContext($config_vars);
+}
+// End Restrict Email Mod
 ]]></add>
 	</operation>
 </file>

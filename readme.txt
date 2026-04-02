@@ -1,6 +1,6 @@
 [size=4][color=red][b]Restrict Email Providers / Domains / TLDs on Registration[/b][/color][/size]
 
-Version: 1.4
+Version: 1.6
 Compatibility: SMF 2.1.X
 
 [hr]
@@ -14,6 +14,8 @@ This modifications allows the administrator to restrict or accept certain E-Mail
 [*] [b]Accept Providers:[/b] Create an exclusive list of email providers. If you fill this list, ONLY users with these providers can register. Anyone else will be rejected.
 [*] [b]Restrict Domains/TLDs:[/b] Block entire domain suffixes or country codes (e.g., .ru, .cn, .xyz).
 [*] [b]Accept Domains/TLDs:[/b] Create an exclusive list of accepted domain suffixes (e.g., .es, .ar, .com). ONLY users whose email ends with these domains will be able to register.
+[*] [b]Restrict Patterns:[/b] Block dynamically generated emails by limiting the maximum allowed dots, numbers, hyphens, and underscores in the email's local part.
+[*] [b]Languages:[/b] English, Spanish, Spanish Latin, Italian, Portuguese Brazilian.
 [/list]
 
 [b]How to use:[/b]
@@ -21,6 +23,7 @@ This modifications allows the administrator to restrict or accept certain E-Mail
 2. Go to the mod settings section in your Admin Panel.
 3. Enable the restriction feature by checking the box.
 4. Fill in the comma-separated lists for the providers or domains you wish to restrict or exclusively accept.
+5. Set limits for characters (dots, numbers, hyphens, and underscores) globally for the left side of the `@` in an email address (0 to disable a specific check).
 
 [color=red][b]IMPORTANT NOTE:[/b] Keep the "Accepted" lists empty unless you want to aggressively block EVERY OTHER provider or domain![/color]
 

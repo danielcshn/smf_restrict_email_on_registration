@@ -12,7 +12,6 @@
 [![GitHub forks](https://img.shields.io/github/forks/danielcshn/smf_restrict_email_on_registration?style=for-the-badge)](https://github.com/danielcshn/smf_restrict_email_on_registration/fork)
 [![GitHub stars](https://img.shields.io/github/stars/danielcshn/smf_restrict_email_on_registration?style=for-the-badge)](https://github.com/danielcshn/smf_restrict_email_on_registration/stargazers)
 [![License](https://img.shields.io/github/license/danielcshn/smf_restrict_email_on_registration?style=for-the-badge)](https://github.com/danielcshn/smf_restrict_email_on_registration/blob/main/LICENSE)
-[![Language](https://img.shields.io/github/languages/top/danielcshn/smf_restrict_email_on_registration?style=for-the-badge)](https://github.com/danielcshn/smf_restrict_email_on_registration/search?l=python)
 [![GitHub last commit](https://img.shields.io/github/last-commit/danielcshn/smf_restrict_email_on_registration?style=for-the-badge)](https://github.com/danielcshn/smf_restrict_email_on_registration/commits/main)
 
 </div>
@@ -27,6 +26,7 @@ This modifications allows the administrator to restrict or accept certain E-Mail
 - <b>Accept Providers:</b> Create an exclusive list of email providers. If you fill this list, ONLY users with these providers can register. Anyone else will be rejected.
 - <b>Restrict Domains/TLDs:</b> Block entire domain suffixes or country codes (e.g., .ru, .cn, .xyz).
 - <b>Accept Domains/TLDs:</b> Create an exclusive list of accepted domain suffixes (e.g., .es, .ar, .com). ONLY users whose email ends with these domains will be able to register.
+- <b>Languages: </b> English, Spanish, Spanish Latin, Italian, Portuguese Brazilian.
 
 ## How to use:
 1. Install the mod via Package Manager.
